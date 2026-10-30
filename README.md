@@ -78,6 +78,7 @@ craft-<name> = { git = "https://github.com/storytold/craft-libs", rev = "<commit
   fed back to egui as the input egui-winit would have made. Commands and their enabled state
   stay in each app.
 - [`craft-plugin-abi`](crates/plugin-abi/README.md): "craft-abi 1" for WebAssembly plugins: the manifest, permission names, host call numbers and the install-time policy gate that checks a package before any guest code runs. No engine. Builds for `wasm32`.
+- [`craft-plugin-sdk`](crates/plugin-sdk/README.md) and [`craft-plugin-sdk-macros`](crates/plugin-sdk-macros/README.md): the guest SDK for "craft-abi 1" plugins. Host calls, handler types, panel trees, and `#[craft_plugin]`, which checks `craft.toml` at compile time and emits the wasm exports. Builds for `wasm32`. Sets `unsafe_code = "deny"` with two explicit allows.
 - [`craft-print`](crates/print/README.md): PDF submission to CUPS and Windows, printer discovery,
   duplex/copies/colour and driver preferences. PDF generation stays in each app.
 
