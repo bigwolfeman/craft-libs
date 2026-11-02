@@ -35,6 +35,10 @@ craft-<name> = { git = "https://github.com/storytold/craft-libs", rev = "<commit
   and writing, transforms, rendering intents, black point compensation, soft proofing, gamut
   checks, 3D LUTs and built-in profiles (sRGB, Display P3, synthetic coated CMYK and others).
 - [`craft-command`](crates/command/README.md): command registry for the Craft apps: commands added at run time, a gate on each call (`before` and `after` hooks with time budgets), a document change feed and a JSON Schema per command. Its `#[command]` macro is in [`craft-command-derive`](crates/command-derive/README.md). Builds for `wasm32`.
+- [`craft-crw`](crates/crw/README.md): clean-room Canon CRW (CIFF) raw decoder, from LightCraft:
+  the heap container, the entropy coding derived by black-box analysis (frozen code tables), sensor
+  black and white levels and as-shot white balance. The complete derivation record (plan, sources
+  log, scripts, verification) is in `crates/crw/clean-room/`. Colour stays in each app.
 - [`craft-dialogs`](crates/dialogs/README.md): native file and message dialogs that never block
   the event loop: queued requests shown at the end of the frame and answered on a later frame,
   free-standing Open and Folder panels and Save sheets on macOS, case-insensitive filters. What
@@ -42,6 +46,9 @@ craft-<name> = { git = "https://github.com/storytold/craft-libs", rev = "<commit
 - [`craft-docpath`](crates/docpath/src/lib.rs): decides whether a path or `file:` URL stored in a
   document may be opened. Paths stored in documents are followed only when they are local or on the
   document's own network share; other network paths, device paths and non-file URLs are refused.
+- [`craft-ecproj-format`](crates/ecproj-format/README.md): the envelope of EffectCraft `.ecproj`
+  project files: `savedBy`, the schema version and its check, and the file object with the
+  project and its saved view as type parameters. The project model stays in EffectCraft.
 - [`craft-font-catalog`](crates/font-catalog/README.md): the installed fonts on every platform
   (font folders, fontconfig and Flatpak host folders, CoreText, DirectWrite, the font store),
   lookup by family, style, localized, legacy, full and PostScript names, family loads shared
@@ -88,6 +95,9 @@ craft-<name> = { git = "https://github.com/storytold/craft-libs", rev = "<commit
   for 47 more languages (one cargo feature each).
 - [`craft-ui`](crates/ui/README.md): SVG catalogs, icon buttons, tabs, pane controls, transactional docking, print settings and theme helpers for egui frontends;
   assets, themes, localization and command handling stay in each app. Requires Rust 1.95 or later.
+- [`craft-vectorcraft-format`](crates/vectorcraft-format/README.md): the envelope of VectorCraft's
+  `.vectorcraft` file: its members, versions, embedded images and the data after the JSON, with the
+  document as a type parameter. The document and its migrations stay in VectorCraft.
 - [Shared UI component audit](docs/ui-components-audit.md): source inventory, extraction priorities
   and compatibility boundaries across the Craft suite.
 - [Theme infrastructure](docs/theme-infrastructure.md): eight-app comparison and the small shared
